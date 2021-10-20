@@ -1,7 +1,6 @@
 const btn = document.getElementById("submit");
 const block = document.getElementById("words");
 let str;
-let itemSorted;
 
 btn.addEventListener("click", () => {
   str = document.getElementById("inp").value;
@@ -31,7 +30,7 @@ function getWords(string) {
 }
 
 function sortWords(words) {
-  itemSorted = Object.keys(words).sort(function (a, b) {
+  let itemSorted = Object.keys(words).sort(function (a, b) {
     return words[a] - words[b];
   });
   itemSorted.reverse();

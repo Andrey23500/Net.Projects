@@ -14,28 +14,29 @@ const monthArray = [
   "December",
 ];
 
-let logger = console.log.bind(console);
-
-console.log = function (str) {
-  let currentData = new Date();
-
-  logger(
-    weekArray[currentData.getDay()] +
-      " " +
-      monthArray[currentData.getMonth()] +
-      " " +
-      currentData.getDate() +
-      " " +
-      currentData.getHours() +
-      ":" +
-      currentData.getMinutes() +
-      ":" +
-      currentData.getSeconds() +
-      " GMT+" +
-      (currentData.getHours() - currentData.getUTCHours()) +
-      " | " +
-      str
-  );
+let log= console.log.bind(console);
+const logger = {
+  show: function (str) {
+    let currentData = new Date();
+    log(
+      weekArray[currentData.getDay()] +
+        " " +
+        monthArray[currentData.getMonth()] +
+        " " +
+        currentData.getDate() +
+        " " +
+        currentData.getHours() +
+        ":" +
+        currentData.getMinutes() +
+        ":" +
+        currentData.getSeconds() +
+        " GMT+" +
+        (currentData.getHours() - currentData.getUTCHours()) +
+        " | " +
+        str
+    );
+  },
 };
 
+console.log=logger.show.bind(console);
 console.log("error");
